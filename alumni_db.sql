@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2023 at 06:27 AM
+-- Generation Time: Jan 21, 2023 at 03:06 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.29
 
@@ -97,8 +97,8 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `course`, `about`) VALUES
-(1, 'BS Information Technology', 'Sample'),
-(3, 'BS Civil Engineering', '');
+(1, 'BS Information Technology', ''),
+(2, 'BS Civil Engineering', '');
 
 -- --------------------------------------------------------
 
@@ -121,8 +121,7 @@ CREATE TABLE `dept_bio` (
 --
 
 INSERT INTO `dept_bio` (`id`, `firstname`, `middle`, `lastname`, `acc_name`, `course_id`, `status`) VALUES
-(1, 'Jungie', 'R.', 'Francisco', 'jungie@bsit', 1, 1),
-(2, 'Rodolfo', 'J.', 'Abubo', 'rodolfo@bsce', 3, 1);
+(1, 'Jungie', 'R.', 'Francisco', 'jungie@bsit', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -312,17 +311,17 @@ CREATE TABLE `users` (
   `password` text NOT NULL,
   `type` tinyint(1) NOT NULL DEFAULT 3 COMMENT '1=Admin, 2=College officer, 3= alumnus',
   `auto_generated_pass` text NOT NULL,
-  `alumnus_id` int(30) NOT NULL
+  `alumnus_id` int(30) NOT NULL,
+  `dept_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `password`, `type`, `auto_generated_pass`, `alumnus_id`) VALUES
-(1, 'Administrator', 'admin@tracer', '326eb31875d6615678c71b4e073a461e', 1, '', 0),
-(2, 'Jungie Francisco', 'jungie@bsit', 'bee5857a1272c0a1c0431d69068ceb33', 2, '', 0),
-(3, 'Rodolfo Abubo', 'rodolfo@bsce', '836553d8ef6844811d2bacc8bffee26b', 2, '', 0);
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `type`, `auto_generated_pass`, `alumnus_id`, `dept_id`) VALUES
+(1, 'Admin', 'admin@tracer', '326eb31875d6615678c71b4e073a461e', 1, '', 0, 0),
+(2, 'Jungie Francisco', 'jungie@bsit', 'bee5857a1272c0a1c0431d69068ceb33', 2, '', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -414,7 +413,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alumnus_bio`
 --
 ALTER TABLE `alumnus_bio`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `careers`
@@ -426,13 +425,13 @@ ALTER TABLE `careers`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dept_bio`
 --
 ALTER TABLE `dept_bio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -486,7 +485,7 @@ ALTER TABLE `system_settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
