@@ -47,6 +47,7 @@ Class Action {
 				if($key != 'passwors' && !is_numeric($key))
 					$_SESSION['login_'.$key] = $value;
 			}
+			
 			if($_SESSION['login_alumnus_id'] > 0){
 				$bio = $this->db->query("SELECT * FROM alumnus_bio where id = ".$_SESSION['login_alumnus_id']);
 				if($bio->num_rows > 0){
@@ -71,24 +72,33 @@ Class Action {
 	function login3(){
 		
 		extract($_POST);		
-		$qry = $this->db->query("SELECT * FROM users where username = '".$username."' and password = '".md5($password)."' ");
-		if($qry->num_rows > 0){
-			foreach ($qry->fetch_array() as $key => $value) {
-				if($key != 'passwors' && !is_numeric($key))
-					$_SESSION['login_'.$key] = $value;
-			}
-			if($_SESSION['login_type'] != 2 && $_SESSION['bio']['status'] != 1){
-				foreach ($_SESSION as $key => $value) {
-					unset($_SESSION[$key]);
+			$qry = $this->db->query("SELECT * FROM users where username = '".$username."' and password = '".md5($password)."' ");
+			// $qry = $this->db->query("SELECT status FROM dept_bio where id = '$id'");
+			if($qry->num_rows > 0){
+				foreach ($qry->fetch_array() as $key => $value) {
+					if($key != 'passwors' && !is_numeric($key))
+						$_SESSION['login_'.$key] = $value;
 				}
-				return 2 ;
-				exit;
+				if($_SESSION['login_dept_id'] > 0){
+					$bio = $this->db->query("SELECT * FROM dept_bio where id = ".$_SESSION['login_dept_id']);
+					if($bio->num_rows > 0){
+						foreach ($bio->fetch_array() as $key => $value) {
+							if($key != 'passwors' && !is_numeric($key))
+								$_SESSION['bio'][$key] = $value;
+						}
+					}
+				}
+				if($_SESSION['bio']['status'] != 1){
+						foreach ($_SESSION as $key => $value) {
+							unset($_SESSION[$key]);
+						}
+						return 2 ;
+						exit;
+					}
+					return 1;
+			}else{
+				return 3;
 			}
-				return 1;
-		}else{
-			return 3;
-		}
-
 		
 }
 	function logout(){
@@ -202,7 +212,7 @@ Class Action {
 			$save_acc = $this->db->query("INSERT INTO dept_bio set $data ");
 			if($data){
 				$did = $this->db->insert_id;
-				$this->db->query("UPDATE users set alumnus_id = '0', type = '2' where id = $uid ");
+				$this->db->query("UPDATE users set alumnus_id = '0', type = '2', dept_id = $did where id = $uid ");
 				$log = $this->login();
 				if($log)
 				return 1;
