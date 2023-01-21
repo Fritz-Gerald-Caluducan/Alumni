@@ -77,7 +77,7 @@ Class Action {
 				if($key != 'passwors' && !is_numeric($key))
 					$_SESSION['login_'.$key] = $value;
 			}
-			if($_SESSION['login_type'] != 2){
+			if($_SESSION['login_type'] != 2 && $_SESSION['bio']['status'] != 1){
 				foreach ($_SESSION as $key => $value) {
 					unset($_SESSION[$key]);
 				}
@@ -88,6 +88,8 @@ Class Action {
 		}else{
 			return 3;
 		}
+
+		
 }
 	function logout(){
 		session_destroy();
@@ -178,7 +180,7 @@ Class Action {
 		$data = " name = '".$firstname.' '.$lastname."' ";
 		$data .= ", username = '$acc_name' ";
 		$data .= ", password = '".md5($password)."' ";
-		$chk = $this->db->query("SELECT * FROM dept_bio where course = '$course'")->num_rows;
+		$chk = $this->db->query("SELECT * FROM dept_bio where course_id = '$course_id'")->num_rows;
 		if($chk > 0){ 
 			return 2;
 			exit;
@@ -424,6 +426,12 @@ Class Action {
 		if($update)
 			return 1;
 	}
+	function update_alumni_acc2(){
+		extract($_POST);
+		$update = $this->db->query("UPDATE dept_bio set status = $status where id = $id");
+		if($update)
+			return 1;
+	}
 	function save_gallery(){
 		extract($_POST);
 		$img = array();
@@ -501,6 +509,14 @@ Class Action {
 			return 1;
 		}
 	}
+	// function delete_alumni(){
+	// 	extract($_POST);
+	// 	$delete = $this->db->query("DELETE FROM alumnus_bio where id = ".$id);
+	// 	$delete2 = $this->db->query("DELETE FROM users where alumnus_id = ".$aid);
+	// 	if($delete && $delete2){
+	// 		return 1;
+	// 	}
+	// }
 	function save_forum(){
 		extract($_POST);
 		$data = " title = '$title' ";

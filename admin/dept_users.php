@@ -33,9 +33,8 @@
 							<thead>
 								<tr>
 									<th class="text-center">#</th>
-									<th class="">Avatar</th>
 									<th class="">Name</th>
-									<th class="">Course Graduated</th>
+									<th class="">Department</th>
 									<th class="">Status</th>
 									<th class="text-center">Action</th>
 								</tr>
@@ -43,17 +42,12 @@
 							<tbody>
 								<?php 
 								$i = 1;
-								$alumni = $conn->query("SELECT a.*,c.course,Concat(a.lastname,', ',a.firstname,' ',a.middlename) as name from alumnus_bio a inner join courses c on c.id = a.course_id order by Concat(a.lastname,', ',a.firstname,' ',a.middlename) asc");
-								while($row=$alumni->fetch_assoc()):
+								$department = $conn->query("SELECT d.*,c.course,Concat(d.lastname,', ',d.firstname,' ',d.middle) as name from dept_bio d inner join courses c on c.id = d.course_id order by Concat(d.lastname,', ',d.firstname,' ',d.middle) asc");
+								while($row=$department->fetch_assoc()):
 									
 								?>
 								<tr>
 									<td class="text-center"><?php echo $i++ ?></td>
-									<td class="text-center">
-										<div class="avatar">
-										 <img src="assets/uploads/<?php echo $row['avatar'] ?>" class="" alt="">
-										</div>
-									</td>
 									<td class="">
 										 <p> <b><?php echo ucwords($row['name']) ?></b></p>
 									</td>
@@ -69,8 +63,8 @@
 
 									</td>
 									<td class="text-center">
-										<button class="btn btn-sm btn-outline-primary view_alumni" type="button" data-id="<?php echo $row['id'] ?>" >View</button>
-										<!-- <button class="btn btn-sm btn-outline-danger delete_alumni" type="button" data-id="<?php echo $row['id'] ?>">Delete</button> -->
+										<button class="btn btn-sm btn-outline-primary view_dept" type="button" data-id="<?php echo $row['id'] ?>" >View</button>
+										<!-- <button class="btn btn-sm btn-outline-danger delete_dept" type="button" data-id="<?php echo $row['id'] ?>">Delete</button> -->
 									</td>
 								</tr>
 								<?php endwhile; ?>
@@ -117,18 +111,18 @@
 		$('table').dataTable()
 	})
 	
-	$('.view_alumni').click(function(){
-		uni_modal("Bio","view_alumni.php?id="+$(this).attr('data-id'),'mid-large')
+	$('.view_dept').click(function(){
+		uni_modal("Bio","view_dept.php?id="+$(this).attr('data-id'),'mid-large')
 		
 	})
-	$('.delete_alumni').click(function(){
-		_conf("Are you sure to delete this alumni?","delete_alumni",[$(this).attr('data-id')])
+	$('.delete_dept').click(function(){
+		_conf("Are you sure to delete this user?","delete_dept",[$(this).attr('data-id')])
 	})
 	
-	function delete_alumni($id){
+	function delete_dept($id){
 		start_load()
 		$.ajax({
-			url:'ajax.php?action=delete_alumni',
+			url:'ajax.php?action=delete_dept',
 			method:'POST',
 			data:{id:$id},
 			success:function(resp){

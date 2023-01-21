@@ -21,9 +21,6 @@
         <link href="admin/assets/css/select2.min.css" rel="stylesheet">
 
 
-
-
-
         <!-- scripts -->
         <script src="admin/assets/vendor/jquery/jquery.min.js"></script>
         <script src="admin/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>

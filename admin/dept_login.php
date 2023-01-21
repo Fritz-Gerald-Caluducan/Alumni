@@ -113,7 +113,7 @@ div#login-right::before {
   		<div id="login-right">
   			<div class="card col-md-8">
   				<div class="card-body">
-  					<form id="login" >
+  					<form id="login-button" >
 					  	<center><h1>Department | Login</h1></center> 
   						<div class="form-group">
   							<label for="username" class="control-label">Department Username</label>
@@ -141,9 +141,9 @@ div#login-right::before {
 
 </body>
 <script>
-	$('#login').submit(function(e){
-		e.preventDefault()
-		$('#login button[type="button"]').attr('disabled',true).html('Logging in...');
+	$('#login-button').submit(function(e){
+		event.preventDefault()
+		$('#login-button button[type="button"]').attr('disabled',true).html('Logging in...');
 		if($(this).find('.alert-danger').length > 0 )
 			$(this).find('.alert-danger').remove();
 		$.ajax({
@@ -152,15 +152,18 @@ div#login-right::before {
 			data:$(this).serialize(),
 			error:err=>{
 				console.log(err)
-		$('#login button[type="button"]').removeAttr('disabled').html('Login');
+		$('#login-button button[type="button"]').removeAttr('disabled').html('Login');
 
 			},
 			success:function(resp){
 				if(resp == 1){
-					location.replace('index.php?page=home')
+					location.href = 'index.php?page=home';
+				}else if(resp == 2){
+					$('#login-button').prepend('<div class="alert alert-danger">Your account is not yet verified.</div>')
+					$('#login-button button[type="submit"]').removeAttr('disabled').html('Login');
 				}else{
-					$('#login').prepend('<div class="alert alert-danger">Username or password is incorrect.</div>')
-					$('#login button[type="button"]').removeAttr('disabled').html('Login');
+					$('#login-button').prepend('<div class="alert alert-danger">Username or password is incorrect.</div>')
+					$('#login-button button[type="button"]').removeAttr('disabled').html('Login');
 				}
 			}
 		})

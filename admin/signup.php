@@ -129,12 +129,12 @@ div#login-right::before {
   						</div>
                         <div class="form-group">
                             <label for="" class="control-label">Department</label>
-                                <select class="custom-select select2" name="course" required>
+                                <select class="custom-select select2" name="course_id" required>
                                     <option></option>
                                         <?php 
                                             $course = $conn->query("SELECT * FROM courses order by course asc");
                                                 while($row=$course->fetch_assoc()):?>
-                                                    <option value="<?php echo $row['course'] ?>"><?php echo $row['course'] ?></option>
+                                                    <option value="<?php echo $row['id'] ?>"><?php echo $row['course'] ?></option>
                                                 <?php endwhile; ?>
                                 </select>
                         </div>  

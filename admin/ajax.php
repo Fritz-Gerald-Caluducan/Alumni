@@ -123,6 +123,11 @@ if($action == "update_alumni_acc"){
 	if($save)
 		echo $save;
 }
+if($action == "update_alumni_acc2"){
+	$save = $crud->update_alumni_acc2();
+	if($save)
+		echo $save;
+}
 if($action == "save_gallery"){
 	$save = $crud->save_gallery();
 	if($save)
@@ -144,6 +149,16 @@ if($action == "delete_career"){
 	if($save)
 		echo $save;
 }
+// if($action == "delete_alumni"){
+// 	$save = $crud->delete_alumni();
+// 	if($save)
+// 		echo $save;
+// }
+// if($action == "delete_dept"){
+// 	$save = $crud->delete_dept();
+// 	if($save)
+// 		echo $save;
+// }
 if($action == "save_forum"){
 	$save = $crud->save_forum();
 	if($save)
