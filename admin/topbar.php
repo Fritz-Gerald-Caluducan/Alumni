@@ -76,7 +76,15 @@
               <div class="dropdown-menu" aria-labelledby="account_settings" style="left: -2.5em;">
                 <a class="dropdown-item" href="../index.php?page=home"><i class="fa fa-home"></i> Alumni Page</a>
                 <a class="dropdown-item" href="javascript:void(0)" id="manage_my_account"><i class="fa fa-cog"></i> Manage Account</a>
+                <?php if($_SESSION['login_type'] == 1): ?>
                 <a class="dropdown-item" href="ajax.php?action=logout"><i class="fa fa-power-off"></i> Logout</a>
+                <?php endif; ?>
+                <?php if($_SESSION['login_type'] == 2): ?>
+                <a class="dropdown-item" href="ajax.php?action=logout3"><i class="fa fa-power-off"></i> Logout</a>
+                <?php endif; ?>
+                <?php if($_SESSION['login_type'] == 3): ?>
+                <a class="dropdown-item" href="ajax.php?action=logout2"><i class="fa fa-power-off"></i> Logout</a>
+                <?php endif; ?>
               </div>
         </div>
       </div>

@@ -125,17 +125,10 @@ div#login-right::before {
   						</div>
   						<center><button class="btn-sm btn-block btn-wave col-md-4 mb-3 btn-primary">Login</button>
 						</center>
-						<a href="dept_login.php" class="link">Department Login</a>
   					</form>
   				</div>
   			</div>
   		</div>
-
-		<div>
-			<a href="#" class="text-dark">Login as Department Officer</a>
-		</div>
-   
-
   </main>
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>

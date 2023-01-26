@@ -70,7 +70,6 @@ Class Action {
 		}
 	}
 	function login3(){
-		
 		extract($_POST);		
 			$qry = $this->db->query("SELECT * FROM users where username = '".$username."' and password = '".md5($password)."' ");
 			// $qry = $this->db->query("SELECT status FROM dept_bio where id = '$id'");
@@ -108,12 +107,21 @@ Class Action {
 		}
 		header("location:login.php");
 	}
+
 	function logout2(){
 		session_destroy();
 		foreach ($_SESSION as $key => $value) {
 			unset($_SESSION[$key]);
 		}
 		header("location:../index.php");
+	}
+
+	function logout3(){
+		session_destroy();
+		foreach ($_SESSION as $key => $value) {
+			unset($_SESSION[$key]);
+		}
+		header("location:dept_login.php");
 	}
 
 	function save_user(){
@@ -195,8 +203,7 @@ Class Action {
 			return 2;
 			exit;
 		}
-		// else{
-		$save = $this->db->query("INSERT INTO users set ".$data);
+			$save = $this->db->query("INSERT INTO users set ".$data);
 		if($save){
 			$uid = $this->db->insert_id;
 			$data = '';
@@ -208,19 +215,16 @@ Class Action {
 				else
 					$data .= ", $k = '$v' ";
 			}
-		
-			$save_acc = $this->db->query("INSERT INTO dept_bio set $data ");
+			$save_department = $this->db->query("INSERT INTO dept_bio set $data ");
 			if($data){
 				$did = $this->db->insert_id;
 				$this->db->query("UPDATE users set alumnus_id = '0', type = '2', dept_id = $did where id = $uid ");
-				$log = $this->login();
-				if($log)
+				// $login = $this->login3();
+				// if($login)
 				return 1;
 				
 			}
-		}	
-			
-		// }
+		}			
 			
 	}
 

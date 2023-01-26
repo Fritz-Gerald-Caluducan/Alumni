@@ -57,6 +57,6 @@
 					$('#login-frm button[type="submit"]').removeAttr('disabled').html('Login');
 				}
 			}
-		})
+		}) 
 	})
 </script>

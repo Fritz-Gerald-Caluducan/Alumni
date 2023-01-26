@@ -19,10 +19,7 @@ ob_end_flush();
   <title><?php echo $_SESSION['system']['name'] ?></title>
  	
 <?php include('./header.php'); ?>
-<!-- <?php 
-if(isset($_SESSION['login_id']))
-header("location:index.php?page=home");
-?> -->
+
 
 </head>
 <style>
@@ -142,8 +139,6 @@ div#login-right::before {
   							<label for="password" class="control-label">Password</label>
   							<input type="password" id="password" name="password" class="form-control" required>
   						</div>
-						<div id="success_message">                                   
-						</div>
 						<div id="error_message">                                   
 						</div>
   						<center><button class="btn-sm btn-block btn-wave col-md-4 mb-3 btn-primary">Create Account</button>
@@ -157,11 +152,6 @@ div#login-right::before {
 </body>
 
 <script>
-$('.select2').select2({
-	placeholder:"Select Department",
-    width:"100%"
-})
-
 $('#create_acc').submit(function(e){
     e.preventDefault()
     // start_load()
@@ -173,21 +163,20 @@ $('#create_acc').submit(function(e){
         processData: false,
         method: 'POST',
         type: 'POST',
-		error:err=>{
-				console.log(err)
-		$('#create_acc button[type="button"]').removeAttr('disabled').html('Create Account');
-
-			},
         success:function(resp){
             if(resp == 1){
-				$('#success_message').html('<div class="alert alert-success">Account created successfully!!.</div>')
                 location.replace('dept_login.php')
             }else{
-                $('#error_message').html('<div class="alert alert-danger">Account for this department already exists!</div>')
+                $('#error_message').html('<div class="alert alert-danger">Department account taken!</div>')
                 // end_load()
             }
         }
     })
+})
+
+$('.select2').select2({
+	placeholder:"Select Department",
+    width:"100%"
 })
 </script>	
 </html>

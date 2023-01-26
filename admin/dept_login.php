@@ -113,7 +113,7 @@ div#login-right::before {
   		<div id="login-right">
   			<div class="card col-md-8">
   				<div class="card-body">
-  					<form id="login-button" >
+  					<form action="" id="login-button" >
 					  	<center><h1>Department | Login</h1></center> 
   						<div class="form-group">
   							<label for="username" class="control-label">Department Username</label>
@@ -126,24 +126,21 @@ div#login-right::before {
   						<center><button class="btn-sm btn-block btn-wave col-md-4 mb-3 btn-primary">Login</button>
                                 <a href="signup.php" class="link">Create Account?</a><br><br>
 						</center>
-                        <a href="login.php" class="link">Admin Login</a>
   					</form>
   				</div>
   			</div>
   		</div>
 
-   
-
   </main>
 
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  
 
 
 </body>
 <script>
 	$('#login-button').submit(function(e){
 		event.preventDefault()
-		$('#login-button button[type="button"]').attr('disabled',true).html('Logging in...');
+		$('#login-button button[type="submit"]').attr('disabled',true).html('Logging in...');
 		if($(this).find('.alert-danger').length > 0 )
 			$(this).find('.alert-danger').remove();
 		$.ajax({
@@ -152,7 +149,7 @@ div#login-right::before {
 			data:$(this).serialize(),
 			error:err=>{
 				console.log(err)
-		$('#login-button button[type="button"]').removeAttr('disabled').html('Login');
+		$('#login-button button[type="submit"]').removeAttr('disabled').html('Login');
 
 			},
 			success:function(resp){
@@ -163,7 +160,7 @@ div#login-right::before {
 					$('#login-button button[type="submit"]').removeAttr('disabled').html('Login');
 				}else{
 					$('#login-button').prepend('<div class="alert alert-danger">Username or password is incorrect.</div>')
-					$('#login-button button[type="button"]').removeAttr('disabled').html('Login');
+					$('#login-button button[type="submit"]').removeAttr('disabled').html('Login');
 				}
 			}
 		})

@@ -18,11 +18,11 @@ if($action == 'login3'){
 	if($login)
 		echo $login;
 }
-if($action == 'login3'){
-	$login = $crud->login3();
-	if($login)
-		echo $login;
-}
+// if($action == 'login3'){
+// 	$login = $crud->login3();
+// 	if($login)
+// 		echo $login;
+// }
 if($action == 'logout'){
 	$logout = $crud->logout();
 	if($logout)
@@ -30,6 +30,11 @@ if($action == 'logout'){
 }
 if($action == 'logout2'){
 	$logout = $crud->logout2();
+	if($logout)
+		echo $logout;
+}
+if($action == 'logout3'){
+	$logout = $crud->logout3();
 	if($logout)
 		echo $logout;
 }

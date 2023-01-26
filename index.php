@@ -92,16 +92,17 @@ a.jqte_tool_label.unselectable {
                         <?php endif; ?>
                         <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php?page=about">About</a></li> -->
                         <?php if(!isset($_SESSION['login_id'])): ?>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="login">Login</a></li>
-                        <!-- <li class="nav-item">
+                        <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#" id="login">Login</a></li> -->
+                        <li class="nav-item">
                           <div class=" dropdown mr-4">
                           <a href="#" class="nav-link js-scroll-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login as <i class="fa fa-angle-down"></i></a>
                             <div class="dropdown-menu" aria-labelledby="account_settings" style="left: -2.5em;">
                               <a class="dropdown-item" href="#" id="login">Alumni</a>
+                              <a class="dropdown-item" href="admin/dept_login.php" id="login">Department</a>
                               <a class="dropdown-item" href="admin/login.php" id="">Admin</a>
                             </div>
                           </div>
-                        </li> -->
+                        </li>
                         
                         <?php else: ?>
                         <li class="nav-item">
@@ -111,7 +112,7 @@ a.jqte_tool_label.unselectable {
                                   <?php if($_SESSION['login_type'] == 3): ?>
                                   <a class="dropdown-item" href="index.php?page=my_account" id="manage_my_account"><i class="fa fa-cog"></i> Manage Account</a>
                                   <?php endif; ?>
-                                  <?php if($_SESSION['login_type'] == 1): ?>
+                                  <?php if($_SESSION['login_type'] == 1 || $_SESSION['login_type'] == 2): ?>
                                   <a class="dropdown-item" href="admin/index.php?page=home"><i class="fa fa-chart-bar" aria-hidden="true"></i> Dashboard</a>
                                   <?php endif; ?>
                                   <a class="dropdown-item" href="admin/ajax.php?action=logout2"><i class="fa fa-power-off"></i> Logout</a>
