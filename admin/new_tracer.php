@@ -1,10 +1,12 @@
 <?php include('db_connect.php');?>
 
+
 <div class="container-fluid">
 	
 <div class="col-lg-12">
 	<div class="card">
 		<div class="card-body">
+			
 			<form action="" id="manage_tracer">
 				<input type="hidden" name="id" value="<?php echo isset($id) ? $id : '' ?>">
 				<div class="row">
@@ -14,6 +16,26 @@
 							<label for="" class="control-label">Title</label>
 							<input type="text" name="title" class="form-control form-control-sm" required value="<?php echo isset($stitle) ? $stitle : '' ?>">
 						</div>
+
+						<?php if($_SESSION['login_type'] == 2): ?>
+
+							<!-- <div class="form-group">
+							<label for="" class="control-label">Department</label> -->
+							<?php
+								// if(isset($_SESSION['login_dept_id'])){
+								// 	$dept = $conn->query("SELECT * FROM dept_bio where id = " .$_SESSION['login_dept_id']);
+								// 	while($row=$dept->fetch_assoc());
+								// 	// $_SESSION["c_id"] = $row['course_id'];
+								// }
+										
+									$department = $conn->query("SELECT d.*, c.course as course from dept_bio d inner join courses c on d.course_id = c.id where d.id = " .$_SESSION['login_dept_id']);
+									while($row=$department->fetch_assoc()):?>
+
+							<input type="hidden" name="department_id" class="form-control form-control-sm" readonly value="<?php echo $row['course_id'] ?>">
+							<?php endwhile; ?>
+							<!-- </div> -->
+						<?php endif; ?>
+
 						<div class="form-group">
 							<label for="" class="control-label">Start</label>
 							<input type="date" name="start_date" class="form-control form-control-sm" required value="<?php echo isset($start_date) ? $start_date : '' ?>">
@@ -67,7 +89,7 @@
 	})
 </script>
 
-</div>
+
 <!-- <style>
 	
 	td{

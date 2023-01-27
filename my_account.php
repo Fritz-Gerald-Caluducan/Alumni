@@ -154,7 +154,9 @@ $('#update_account').submit(function(e){
                 alert_toast("Account successfully updated.",'success');
                 setTimeout(function(){
                  location.reload()
-                },700)
+                 location.replace('index.php')
+                },1000)
+                
             }else{
                 $('#msg').html('<div class="alert alert-danger">email already exist.</div>')
                 end_load()

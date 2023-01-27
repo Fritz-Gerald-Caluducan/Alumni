@@ -30,6 +30,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <?php if($_SESSION['login_type'] == 1): ?>
                         <?php
                         $i = 1;
                         $qry = $conn->query("SELECT * FROM survey_set order by date(start_date) asc,date(end_date) asc ");
@@ -64,6 +65,45 @@
                             </td>
                         </tr>	
                     <?php endwhile; ?>
+                    <?php endif; ?>
+
+                    <?php if($_SESSION['login_type'] == 2): ?>
+                        <?php
+                        $i = 1;
+                        $survey = $conn->query("SELECT d.*, s.* from dept_bio d inner join survey_set s on d.course_id = s.department_id where d.id = '" .$_SESSION['login_dept_id']."' order by date(start_date) asc,date(end_date) asc ");
+                        while($row=$survey->fetch_assoc()):
+                        ?>
+                        <tr>
+                            <th class="text-center"><?php echo $i++ ?></th>
+                            <td><b><?php echo ucwords($row['title']) ?></b></td>
+                            <td><b class="truncate"><?php echo $row['description'] ?></b></td>
+                            <td><b><?php echo date("M d, Y",strtotime($row['start_date'])) ?></b></td>
+                            <td><b><?php echo date("M d, Y",strtotime($row['end_date'])) ?></b></td>
+                            <td class="text-center">
+                                <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                Action
+                                </button>
+                                <div class="dropdown-menu" style="">
+                                <a class="dropdown-item" href="./index.php?page=edit_survey&id=<?php echo $row['id'] ?>">Edit</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item delete_survey" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">Delete</a>
+                                </div> -->
+                                <div class="btn-group">
+                                    <a href="index.php?page=edit_tracer&id=<?php echo $row['id'] ?>" class="btn btn-primary btn-flat">
+                                    <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a  href="index.php?page=view_tracer&id=<?php echo $row['id'] ?>" class="btn btn-info btn-flat">
+                                    <i class="fas fa-eye"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-danger btn-flat delete_survey" data-id="<?php echo $row['id'] ?>">
+                                    <i class="fas fa-trash"></i>
+                                    </button>
+                            </div>
+                            </td>
+                        </tr>	
+                    <?php endwhile; ?>
+                    <?php endif; ?>
+
                     </tbody>
                 </table>
             </div>

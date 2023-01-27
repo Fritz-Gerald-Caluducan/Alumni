@@ -36,9 +36,14 @@ while($row=$answers->fetch_assoc()){
 	<div class=" w-100 text-white" id='ns' style="display: none"><center><b>No Result.</b></center></div>
 	<div class="row pt-5 pb-5">
 		<?php 
-		$survey = $conn->query("SELECT * FROM survey_set where '".date('Y-m-d')."' between date(start_date) and date(end_date) order by rand() ");
-		while($row=$survey->fetch_assoc()):
-		?>
+		// $survey = $conn->query("SELECT * FROM survey_set where '".date('Y-m-d')."' between date(start_date) and date(end_date) order by rand() ");
+
+		// $survey = $conn->query("SELECT s.*, a.id as aid from survey_set s inner join alumnus_bio a on s.department_id = a.course_id where s.department_id = 0 or a.id = '" .$_SESSION['login_alumnus_id']."' and '".date('Y-m-d')."' between date(start_date) and date(end_date) order by rand() ");
+
+		$survey = $conn->query("SELECT a.*, s.* from alumnus_bio a inner join survey_set s on a.course_id = s.department_id or s.department_id = '0' where a.id = '" .$_SESSION['login_alumnus_id']."' and '".date('Y-m-d')."' between date(start_date) and date(end_date) order by rand() ");
+		
+		while($row=$survey->fetch_assoc()):?>
+
 		<div class="col-md-3 py-1 px-1 survey-item">
 			<div class="card card-outline card-primary">
               <div class="card-header">

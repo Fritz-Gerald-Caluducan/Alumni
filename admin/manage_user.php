@@ -59,6 +59,7 @@ foreach($user->fetch_array() as $k =>$v){
 					alert_toast("Data successfully saved",'success')
 					setTimeout(function(){
 						location.reload()
+						location.replace('login.php')
 					},1500)
 				}else{
 					$('#msg').html('<div class="alert alert-danger">Username already exist</div>')

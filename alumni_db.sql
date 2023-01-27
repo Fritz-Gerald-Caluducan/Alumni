@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2023 at 03:06 PM
+-- Generation Time: Jan 27, 2023 at 11:14 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.29
 
@@ -41,6 +41,13 @@ CREATE TABLE `alumnus_bio` (
   `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0= Unverified, 1= Verified',
   `date_created` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `alumnus_bio`
+--
+
+INSERT INTO `alumnus_bio` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `batch`, `course_id`, `email`, `connected_to`, `avatar`, `status`, `date_created`) VALUES
+(1, 'Fritz', 'Cabaldede', 'Caluducan', 'Male', 2023, 1, 'fritz@gmail.com', 'Jollibee', '1674727980_Pirma.png', 1, '2023-01-26');
 
 -- --------------------------------------------------------
 
@@ -121,7 +128,8 @@ CREATE TABLE `dept_bio` (
 --
 
 INSERT INTO `dept_bio` (`id`, `firstname`, `middle`, `lastname`, `acc_name`, `course_id`, `status`) VALUES
-(1, 'Jungie', 'R.', 'Francisco', 'jungie@bsit', 1, 1);
+(1, 'Jungie', 'R.', 'Francisco', 'jungie@bsit', 1, 1),
+(17, 'Rodolfo', 'J.', 'Abubo', 'rodolfo@bsce', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -260,6 +268,7 @@ CREATE TABLE `questions` (
 CREATE TABLE `survey_set` (
   `id` int(30) NOT NULL,
   `title` varchar(200) NOT NULL,
+  `department_id` int(30) NOT NULL,
   `description` text NOT NULL,
   `user_id` int(30) NOT NULL,
   `start_date` date NOT NULL,
@@ -271,10 +280,10 @@ CREATE TABLE `survey_set` (
 -- Dumping data for table `survey_set`
 --
 
-INSERT INTO `survey_set` (`id`, `title`, `description`, `user_id`, `start_date`, `end_date`, `date_created`) VALUES
-(1, 'BSIT Graduate Tracer', 'To Track BSIT Graduates from CLSU', 0, '2023-01-09', '2024-01-09', '2023-01-09 09:27:17'),
-(2, 'CLSU', 'To Track CLSU Graduates', 0, '2023-01-09', '2023-02-09', '2023-01-09 09:31:28'),
-(3, 'New', 'New Survey', 0, '2023-01-09', '2023-01-13', '2023-01-09 10:02:18');
+INSERT INTO `survey_set` (`id`, `title`, `department_id`, `description`, `user_id`, `start_date`, `end_date`, `date_created`) VALUES
+(7, 'adadad', 0, 'adadad', 0, '2023-01-27', '2023-01-28', '2023-01-27 11:27:29'),
+(8, 'ititit', 1, 'ititit', 0, '2023-01-27', '2023-01-28', '2023-01-27 11:28:00'),
+(9, 'cecece', 2, 'cecece', 0, '2023-01-27', '2023-01-28', '2023-01-27 11:28:26');
 
 -- --------------------------------------------------------
 
@@ -321,7 +330,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `type`, `auto_generated_pass`, `alumnus_id`, `dept_id`) VALUES
 (1, 'Admin', 'admin@tracer', '326eb31875d6615678c71b4e073a461e', 1, '', 0, 0),
-(2, 'Jungie Francisco', 'jungie@bsit', 'bee5857a1272c0a1c0431d69068ceb33', 2, '', 0, 1);
+(2, 'Jungie Francisco', 'jungie@bsit', 'bee5857a1272c0a1c0431d69068ceb33', 2, '', 0, 1),
+(18, 'Rodolfo Abubo', 'rodolfo@bsce', '836553d8ef6844811d2bacc8bffee26b', 2, '', 0, 17),
+(19, 'Fritz Caluducan', 'fritz@gmail.com', '871669c32610aeded57a03b5bc807bf5', 3, '', 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -413,7 +424,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alumnus_bio`
 --
 ALTER TABLE `alumnus_bio`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `careers`
@@ -431,7 +442,7 @@ ALTER TABLE `courses`
 -- AUTO_INCREMENT for table `dept_bio`
 --
 ALTER TABLE `dept_bio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -473,7 +484,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `survey_set`
 --
 ALTER TABLE `survey_set`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `system_settings`
@@ -485,7 +496,7 @@ ALTER TABLE `system_settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

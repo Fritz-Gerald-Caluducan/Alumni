@@ -219,8 +219,6 @@ Class Action {
 			if($data){
 				$did = $this->db->insert_id;
 				$this->db->query("UPDATE users set alumnus_id = '0', type = '2', dept_id = $did where id = $uid ");
-				// $login = $this->login3();
-				// if($login)
 				return 1;
 				
 			}
@@ -262,7 +260,7 @@ Class Action {
 				foreach ($_SESSION as $key => $value) {
 					unset($_SESSION[$key]);
 				}
-				$login = $this->login3();
+				$login = $this->login2();
 				if($login)
 				return 1;
 			}

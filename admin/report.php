@@ -14,6 +14,8 @@ $answers = $conn->query("SELECT distinct(survey_id) from answers where user_id =
 	</div>
 	<div class=" w-100" id='ns' style="display: none"><center><b>No Result.</b></center></div>
 	<div class="row">
+
+	<?php if($_SESSION['login_type'] == 1): ?>
 		<?php 
 		$survey = $conn->query("SELECT * FROM survey_set order by rand() ");
 		while($row=$survey->fetch_assoc()):
@@ -41,6 +43,38 @@ $answers = $conn->query("SELECT distinct(survey_id) from answers where user_id =
             </div>
 		</div>
 	<?php endwhile; ?>
+	<?php endif; ?>
+		
+	<?php if($_SESSION['login_type'] == 2): ?>
+		<?php 
+				$survey = $conn->query("SELECT d.*, s.* from dept_bio d inner join survey_set s on d.course_id = s.department_id where d.id = '" .$_SESSION['login_dept_id']."' order by rand() ");
+		while($row=$survey->fetch_assoc()):
+		?>
+		<div class="col-md-3 py-1 px-1 survey-item">
+			<div class="card card-outline card-primary">
+              <div class="card-header">
+                <h3 class="card-title"><?php echo ucwords($row['title']) ?></h3>
+
+                <!-- <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div> -->
+              </div>
+              <div class="card-body" style="display: block;">
+               <?php echo $row['description'] ?>
+               <div class="row">
+               	<hr class="border-primary">
+               	<div class="d-flex justify-content-center w-100 text-center">
+               			<a href="index.php?page=survey_report&id=<?php echo $row['id'] ?>" class="btn btn-sm bg-gradient-primary"><i class="fa fa-poll"></i> View Report</a>
+               	</div>
+               </div>
+              </div>
+            </div>
+		</div>
+	<?php endwhile; ?>
+	<?php endif; ?>	
+
 	</div>
 </div>
 <script>

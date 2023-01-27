@@ -44,7 +44,6 @@
 								$i = 1;
 								$department = $conn->query("SELECT d.*,c.course,Concat(d.lastname,', ',d.firstname,' ',d.middle) as name from dept_bio d inner join courses c on c.id = d.course_id order by Concat(d.lastname,', ',d.firstname,' ',d.middle) asc");
 								while($row=$department->fetch_assoc()):
-									
 								?>
 								<tr>
 									<td class="text-center"><?php echo $i++ ?></td>
