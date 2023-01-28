@@ -12,9 +12,8 @@ foreach($qry as $k => $v){
             <div class="container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end mb-4 page-title">
-                        <h3 class="text-white">Tracer Form</h3>
-                        <hr class="divider my-4" />
-
+						<h3 class="text-white text-uppercase font-italic">Tracer Form</h3>
+                        <hr class="divider my-4" />			
                     <div class="col-md-12 mb-2 justify-content-center">
                     </div>                        
                     </div>
@@ -24,10 +23,10 @@ foreach($qry as $k => $v){
         </header>
 
 <div class="col-lg-12">
-	<div class="row">
-		<div class="col-md-4">
+	<div class="row pt-3 pb-3 justify-content-center">
+		<div class="col-md-3">
 			<div class="card card-outline card-primary">
-				<div class="card-header">
+				<div class="card-header text-center">
 					<h3 class="card-title"><b>Survey Details</b></h3>
 				</div>
 				<div class="card-body p-0 py-2">
@@ -39,13 +38,13 @@ foreach($qry as $k => $v){
 						<p>End: <b><?php echo date("M d, Y",strtotime($end_date)) ?></b></p>
 
 					</div>
-					<hr class="border-primary">
+					<hr class="border-success">
 				</div>
 			</div>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-6">
 			<div class="card card-outline card-success">
-				<div class="card-header">
+				<div class="card-header text-center">
 					<h3 class="card-title"><b>Survey Questionaire</b></h3>
 				</div>
 				<form action="" id="manage-tracer">
@@ -64,7 +63,7 @@ foreach($qry as $k => $v){
 								if($row['type'] == 'radio_opt'):
 									foreach(json_decode($row['frm_option']) as $k => $v):
 							?>
-							<div class="icheck-primary">
+							<div class="icheck-success">
 		                        <input type="radio" id="option_<?php echo $k ?>" name="answer[<?php echo $row['id'] ?>]" value="<?php echo $k ?>" checked="">
 		                        <label for="option_<?php echo $k ?>"><?php echo $v ?></label>
 		                     </div>
@@ -72,7 +71,7 @@ foreach($qry as $k => $v){
 						<?php elseif($row['type'] == 'check_opt'): 
 									foreach(json_decode($row['frm_option']) as $k => $v):
 							?>
-							<div class="icheck-primary">
+							<div class="icheck-success">
 		                        <input type="checkbox" id="option_<?php echo $k ?>" name="answer[<?php echo $row['id'] ?>][]" value="<?php echo $k ?>" >
 		                        <label for="option_<?php echo $k ?>"><?php echo $v ?></label>
 		                     </div>

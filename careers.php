@@ -49,7 +49,7 @@ header.masthead,header.masthead:before {
     <div class="container-fluid h-100">
         <div class="row h-100 align-items-center justify-content-center text-center">
             <div class="col-lg-8 align-self-end mb-4 page-title">
-                <h3 class="text-white">Job List</h3>
+                <h3 class="text-white font-italic text-uppercase">Job List</h3>
                 <hr class="divider my-4" />
             <div class="row col-md-12 mb-2 justify-content-center">
                     <button class="btn btn-primary btn-block col-sm-4" type="button" id="new_career"><i class="fa fa-plus"></i> Post a Job Opportunity</button>
@@ -72,7 +72,7 @@ header.masthead,header.masthead:before {
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-primary btn-block btn-sm" id="search">Search</button>
+                    <button class="btn btn-primary btn-block btn-md" id="search">Search</button>
                 </div>
             </div>
             

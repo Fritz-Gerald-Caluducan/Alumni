@@ -11,7 +11,7 @@ while($row=$answers->fetch_assoc()){
             <div class="container-fluid h-100">
                 <div class="row h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end mb-4 page-title">
-                        <h3 class="text-white">Tracer Form</h3>
+                        <h3 class="text-white font-italic text-uppercase">Tracer Form</h3>
                         <hr class="divider my-4" />
 
                     <div class="col-md-12 mb-2 justify-content-center">
@@ -22,9 +22,9 @@ while($row=$answers->fetch_assoc()){
             </div>
         </header>
 
-<div class="container-fluid mt-3 pt-2">
+<div class="container mt-3 pt-2">
 <div class="col-lg-12">
-	<div class="d-flex w-100 justify-content-center align-items-center mb-2">
+	<!-- <div class="d-flex w-100 justify-content-center align-items-center mb-2">
 		<label for="" class="text-white">Find Survey</label>
 		<div class="input-group input-group-sm col-sm-5">
           <input type="text" class="form-control" id="filter" placeholder="Enter keyword...">
@@ -32,9 +32,27 @@ while($row=$answers->fetch_assoc()){
             <button type="button" class="btn btn-primary btn-flat" id="search">Search</button>
           </span>
         </div>
-	</div>
+	</div> -->
+	<div class="card pt-2 m-auto">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend shadow rounded">
+                        <span class="input-group-text" id="filter-field"><i class="fa fa-search"></i></span>
+                      </div>
+                      <input type="text" class="form-control" id="filter" placeholder="Find Survey" aria-label="Filter" aria-describedby="filter-field">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-primary btn-block btn-md" id="search">Search</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 	<div class=" w-100 text-white" id='ns' style="display: none"><center><b>No Result.</b></center></div>
-	<div class="row pt-5 pb-5">
+	<div class="row pt-4 pb-5">
 		<?php 
 		// $survey = $conn->query("SELECT * FROM survey_set where '".date('Y-m-d')."' between date(start_date) and date(end_date) order by rand() ");
 
@@ -44,9 +62,9 @@ while($row=$answers->fetch_assoc()){
 		
 		while($row=$survey->fetch_assoc()):?>
 
-		<div class="col-md-3 py-1 px-1 survey-item">
+		<div class="col-md-4 py-1 px-2 survey-item">
 			<div class="card card-outline card-primary">
-              <div class="card-header">
+              <div class="card-header text-center bg-warning">
                 <h3 class="card-title"><?php echo ucwords($row['title']) ?></h3>
 
                 <!-- <div class="card-tools">
@@ -61,7 +79,7 @@ while($row=$answers->fetch_assoc()){
                	<hr class="border-primary">
                	<div class="d-flex justify-content-center w-100 text-center">
                		<?php if(!isset($ans[$row['id']])): ?>
-               			<a href="index.php?page=answer_tracer&id=<?php echo $row['id'] ?>" class="btn btn-sm bg-gradient-primary"><i class="fa fa-pen-square"></i> Take Survey</a>
+               			<a href="index.php?page=answer_tracer&id=<?php echo $row['id'] ?>" class="btn btn-md badge badge-success pt-2"><i class="fa fa-pen-square"></i> Take Survey</a>
                		<?php else: ?>
                			<p class="text-primary border-top border-primary">Done</p>
                		<?php endif; ?>

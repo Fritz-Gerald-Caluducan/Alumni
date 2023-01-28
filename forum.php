@@ -49,7 +49,7 @@ header.masthead,header.masthead:before {
     <div class="container-fluid h-100">
         <div class="row h-100 align-items-center justify-content-center text-center">
             <div class="col-lg-8 align-self-end mb-4 page-title">
-                <h3 class="text-white">Forum List</h3>
+                <h3 class="text-white font-italic text-uppercase">Forum List</h3>
                 <hr class="divider my-4" />
             <div class="row col-md-12 mb-2 justify-content-center">
                     <button class="btn btn-primary btn-block col-sm-4" type="button" id="new_forum"><i class="fa fa-plus"></i> Create New Topic</button>
@@ -63,16 +63,16 @@ header.masthead,header.masthead:before {
     <div class="card mb-4">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-sm-8">
                     <div class="input-group mb-3">
-                      <div class="input-group-prepend">
+                      <div class="input-group-prepend shadow rounded">
                         <span class="input-group-text" id="filter-field"><i class="fa fa-search"></i></span>
                       </div>
                       <input type="text" class="form-control" id="filter" placeholder="Filter" aria-label="Filter" aria-describedby="filter-field">
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-primary btn-block btn-sm" id="search">Search</button>
+                    <button class="btn btn-primary btn-block btn-md" id="search">Search</button>
                 </div>
             </div>
             
@@ -88,9 +88,9 @@ header.masthead,header.masthead:before {
         $count_comments=0;
         $count_comments = $conn->query("SELECT * FROM forum_comments where topic_id = ".$row['id'])->num_rows;
     ?>
-    <div class="card Forum-list" data-id="<?php echo $row['id'] ?>">
+    <div class="card Forum-list shadow rounded" data-id="<?php echo $row['id'] ?>">
         <div class="card-body">
-            <div class="row  align-items-center justify-content-center text-center h-100">
+            <div class="row  align-items-center justify-content-center text-center h-100 m-auto">
                 <div class="">
                     <?php if($_SESSION['login_id'] == $row['user_id']): ?>
                     <div class="dropdown float-right mr-4">
@@ -108,13 +108,13 @@ header.masthead,header.masthead:before {
                     <larger class="truncate filter-txt"><?php echo strip_tags($desc) ?></larger>
                     <br>
                     <hr class="divider"  style="max-width: calc(80%)">
-                    <span class="badge badge-info float-left px-3 pt-1 pb-1">
+                    <span class="badge badge-info float-left px-4 pt-1 pb-1 ml-4">
                         <b><i>Topic Created by: <span class="filter-txt"><?php echo $row['name'] ?></span></i></b>
                     </span>
                      <span class="badge badge-secondary float-left px-3 pt-1 pb-1 ml-2">
                         <b><i class="fa fa-comments"></i> <i><?php echo $count_comments ?> Comments</i></b>
                     </span>
-                    <button class="btn btn-primary float-right view_topic" data-id="<?php echo $row['id'] ?>">View Topic</button>
+                    <button class="btn btn-primary float-right view_topic mr-4" data-id="<?php echo $row['id'] ?>">View Topic</button>
                 </div>
             </div>
             

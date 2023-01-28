@@ -67,7 +67,7 @@ header.masthead,header.masthead:before {
     </div>
 </header>
 <div class="container mt-3 pt-2">
-    <div class="card mb-4">
+    <div class="card mb-4 mt-1">
         <div class="card-body">
 	            <?php echo html_entity_decode($description) ?>
         <hr class="divider">
@@ -114,7 +114,7 @@ header.masthead,header.masthead:before {
     						<input type="hidden" name="topic_id" value="<?php echo isset($id) ? $id : '' ?>">
     						<textarea class="form-control jqte" name="comment" cols="30" rows="5" placeholder="New Comment"></textarea>
     					</div>
-    					<button class="btn btn-primary">Save Comment</button>
+    					<button class="btn btn-primary float-center">Save Comment</button>
     				</form>
     			</div>
     	</div>
