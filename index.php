@@ -189,14 +189,14 @@ a.jqte_tool_label.unselectable {
         <footer class=" py-5">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
+                    <div class="col-lg-3 text-center">
                         <h2 class="mt-0 text-white">Contact us</h2>
                         <hr class="divider my-4" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+                        <i class="fas fa-phone fa-2x mb-3 text-muted"></i>
                         <div class="text-white"><?php echo $_SESSION['system']['contact'] ?></div>
                     </div>
                     <div class="col-lg-4 mr-auto text-center">
@@ -207,7 +207,7 @@ a.jqte_tool_label.unselectable {
                 </div>
             </div>
             <br>
-            <div class="container"><div class="small text-center text-muted">Copyright © 2021 - <?php echo $_SESSION['system']['name'] ?></div></div>
+            <div class="container"><div class="small text-center text-muted">Copyright © 2023 - <?php echo $_SESSION['system']['name'] ?></div></div>
         </footer>
         
        <?php include('footer.php') ?>

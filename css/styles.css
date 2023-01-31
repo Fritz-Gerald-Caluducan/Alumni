@@ -9795,7 +9795,7 @@ button.bg-dark:focus {
 }
 
 .text-white {
-  color: #036700 !important;
+  color: white !important;
 }
 
 .text-primary {
@@ -10177,7 +10177,7 @@ header.masthead h1 {
   bottom: 0;
   z-index: 9999;
   overflow: hidden;
-  background: #ffffff82;
+  background: #ffffffff;
 }
 
 #preloader2:before {
@@ -10381,9 +10381,9 @@ div#menu-field img, div#menu-field .menu-item-details {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 9999;
+  z-index: 999;
   overflow: hidden;
-  background: #ffffff82;
+  background: #ffffffff;
 }
 
 #preloader:before {
