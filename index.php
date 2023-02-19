@@ -187,27 +187,44 @@ a.jqte_tool_label.unselectable {
   </div>
   <div id="preloader"></div>
         <footer class=" py-5">
-            <div class="container">
+            <div class="container" style="margin left: 2rem;">
                 <div class="row justify-content-center">
-                    <div class="col-lg-3 text-center">
-                        <h2 class="mt-0 text-white">Contact us</h2>
-                        <hr class="divider my-4" />
+                    <div>
+                          <h5 class="mt-0 text-white">Contact Us</h5>
+                          
                     </div>
-                </div>
-                <div class="row">
+                    <div class="row ml-auto text-left mb-2">
+                        
+                        <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0" style="width: 100%;">
+                        <div class="text-white"><?php echo $_SESSION['system']['contact'] ?></div></div>
+                    
+                        <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                        <a class="d-block" href="mailto:<?php echo $_SESSION['system']['email'] ?>"><?php echo $_SESSION['system']['email'] ?></a>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-4 mr-auto text-center">
+                        Make sure to change the email address in BOTH the anchor text and the link target below!                       
+                        <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
+                        <a class="d-block" href="mailto:<?php echo $_SESSION['system']['email'] ?>"><?php echo $_SESSION['system']['email'] ?></a>
+                    </div> -->
+                        <!-- <h5 class="mt-0 text-white"></h5>
+                        <hr class="divider my-4" />
+                    </div> -->
+                
+                <!-- <div class="row justify-content-center">
+                    <div>
+                    <h5 class="mt-0 text-white">Contact us</h5>
+                    </div>
                     <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                        <i class="fas fa-phone fa-2x mb-3 text-muted"></i>
                         <div class="text-white"><?php echo $_SESSION['system']['contact'] ?></div>
                     </div>
                     <div class="col-lg-4 mr-auto text-center">
-                        <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
-                        <!-- Make sure to change the email address in BOTH the anchor text and the link target below!-->
+                         Make sure to change the email address in BOTH the anchor text and the link target below!
                         <a class="d-block" href="mailto:<?php echo $_SESSION['system']['email'] ?>"><?php echo $_SESSION['system']['email'] ?></a>
                     </div>
-                </div>
+                </div> -->
             </div>
-            <br>
-            <div class="container"><div class="small text-center text-muted">Copyright © 2023 - <?php echo $_SESSION['system']['name'] ?></div></div>
+             <div class="container"><div class="small text-center text-muted">Copyright © 2023 - <?php echo $_SESSION['system']['name'] ?></div></div>
         </footer>
         
        <?php include('footer.php') ?>
